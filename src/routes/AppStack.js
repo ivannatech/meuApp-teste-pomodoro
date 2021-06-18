@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
@@ -12,8 +14,42 @@ import PasswordGenerator from '../screens/PasswordGenerator';
 import NewsScreen from '../screens/NewsScreen';
 
 const Stack = createStackNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
-function AppStack() {
+function MainTab() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      activeColor="#f0edf6"
+      inactiveColor="#003400"
+      barStyle={{ backgroundColor: '#006400' }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color }) => (
+            <Icon name="ios-home" color={color} size={26} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: ({ color }) => (
+            <Icon name="ios-person" color={color} size={26} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+export default function AppStack() {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -28,8 +64,8 @@ function AppStack() {
           },
         }}
       >
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Home" component={MainTab} />
+        {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
         <Stack.Screen
           name="Biscoito da Sorte"
           component={FortuneCookieScreen}
@@ -43,5 +79,3 @@ function AppStack() {
     </NavigationContainer>
   );
 }
-
-export default AppStack;
