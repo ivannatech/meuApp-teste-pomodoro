@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import Slider from '@react-native-community/slider';
 import Clipboard from 'expo-clipboard';
-import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 
 let charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
@@ -25,10 +23,6 @@ export default function PasswordGenerator() {
     alert('Senha copiada com sucesso!');
   }
 
-  const { navigate } = useNavigation();
-  function handleRedirectHome() {
-    navigate('Home');
-  }
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />

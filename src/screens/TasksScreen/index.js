@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList, Modal, StatusBar, TouchableOpacity } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { useNavigation } from '@react-navigation/native';
 
 //components
 import TaskList from '../../components/TaskList';
@@ -63,11 +62,6 @@ function Maker() {
     const find = task.filter((r) => r.key !== data.key);
     setTask(find);
   });
-
-  const { navigate } = useNavigation();
-  function handleRedirectHome() {
-    navigate('Home');
-  }
 
   return (
     <KeyboardView>
